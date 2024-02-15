@@ -1,6 +1,9 @@
 import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
 
 def train():
     # import data
@@ -22,11 +25,7 @@ def train():
     rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
     # Train the model
     rf_model.fit(X_train_scaled, y_train)
-    
-
-
-# Save the scaler
-dump(scaler, 'scaler.joblib')
-
-# Save the model
-dump(model, 'model.joblib')
+    # Save the scaler
+    joblib.dump(scaler, 'data/scaler.joblib')
+    # Save the model
+    joblib.dump(rf_model, 'data/model.joblib')
